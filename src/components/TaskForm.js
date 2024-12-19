@@ -1,15 +1,39 @@
 import React, { useState } from 'react'
 import { Form, Input, Button, DatePicker } from 'antd';
-
+import { addTask } from '../redux/tasks/taskSlice';
+import { useDispatch } from 'react-redux';
 
 const TaskForm = () => {
-    const [task, setTask] = useState('');
+
+    const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
+    const dispatch = useDispatch('');
 
-    const handleChange = (values) => {
-        console.log('Form Values: ', values);
-    }
+    // const handleChange = (values) => {
+    //     console.log('Form Values: ', values);
+    // }
+
+    const handleSubmit = (e) => {
+        e.prevantDefault();
+
+
+        if (taskName.trim()) {
+            dispatch(
+                addTask({
+                    id: Date.now(),
+                    name: taskName,
+                    description,
+                    dueDate,
+                    completed: false,
+                })
+            );
+            setTaskName('');
+            setDescription('');
+            setDueDate('');
+        }
+    };
+
 
 
     return (
@@ -22,11 +46,12 @@ const TaskForm = () => {
                     initialValues={{ remember: true }}
 
                     layout="vertical"
+                    onSubmit={handleSubmit}
                 >
                     <Form.Item
                         label="Enter new task"
                         name="Enter new task"
-                        onChange={handleChange}
+                        onChange={(e) => setTaskName(e.target.value)}
 
                         rules={[{ required: true, message: 'Please input your task name!' }]}
 
@@ -37,7 +62,7 @@ const TaskForm = () => {
                     <Form.Item
                         label="Enter Task Description"
                         name="Enter Task Description"
-                        onChange={handleChange}
+                        onChange={(e) => setDescription(e.target.value)}
 
                         rules={[{ required: true, message: 'Please input your description!' }]}
 
