@@ -1,16 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 import TaskForm from './components/TaskForm';
+import TaskItem from './components/TaskItem';
+import TaskFilters from './components/TaskFilters';
 
 function App() {
   return (
     <div className="App">
       <h1>Task Management Application</h1>
-      <TaskForm/>
-      
+      <TaskForm />
+      <TaskItem />
+      <TaskFilters />
 
       {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logo" />'h
+
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
