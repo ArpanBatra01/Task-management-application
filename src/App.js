@@ -1,34 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
-import TaskForm from './components/TaskForm';
-import TaskItem from './components/TaskItem';
-import TaskFilters from './components/TaskFilters';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import TaskManagement from './pages/TaskManagement';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Task Management Application</h1>
-      <TaskForm />
-      <TaskItem />
-      <TaskFilters />
+    <Router>
+      <Routes>
+        <Route path="/" element={<TaskManagement />} />
 
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />'h
+      </Routes>
+    </Router>   
+  )
 
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-    </div>
-  );
 }
 
 export default App;

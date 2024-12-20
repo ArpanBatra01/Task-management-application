@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { toggleTask, removeTask } from '../redux/tasks/taskSlice';
 
+
 const TaskItem = ({ task }) => {
     const dispatch = useDispatch();
 
@@ -12,7 +13,7 @@ const TaskItem = ({ task }) => {
             <input
                 type="checkbox"
                 checked={task}
-                onChange={() => dispatch(toggleTask(task.id))}
+            // onChange={() => dispatch(toggleTask(task))}
             />
 
             <button onClick={() => dispatch(removeTask(task))} style={{ marginLeft: '10px' }}>

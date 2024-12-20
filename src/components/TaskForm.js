@@ -3,38 +3,32 @@ import { Form, Input, Button, DatePicker } from 'antd';
 import { addTask } from '../redux/tasks/taskSlice';
 import { useDispatch } from 'react-redux';
 
+
 const TaskForm = () => {
 
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
+    const [name, setName] = useState('');
     const dispatch = useDispatch('');
+
 
     // const handleChange = (values) => {
     //     console.log('Form Values: ', values);
     // }
 
     const handleSubmit = (e) => {
+
         e.prevantDefault();
-
-
-        if (taskName.trim()) {
-            dispatch(
-                addTask({
-                    id: Date.now(),
-                    name: taskName,
-                    description,
-                    dueDate,
-                    completed: false,
-                })
-            );
+        if (taskName && dueDate) {
+            dispatch(addTask({ id: Date.now(), taskName, description, dueDate, completed: false }));
             setTaskName('');
             setDescription('');
             setDueDate('');
+
         }
+
     };
-
-
 
     return (
 
@@ -44,6 +38,8 @@ const TaskForm = () => {
                 <Form
                     name="basic"
                     initialValues={{ remember: true }}
+                    value={taskName}
+
 
                     layout="vertical"
                     onSubmit={handleSubmit}
@@ -52,6 +48,7 @@ const TaskForm = () => {
                         label="Enter new task"
                         name="Enter new task"
                         onChange={(e) => setTaskName(e.target.value)}
+                        value={description}
 
                         rules={[{ required: true, message: 'Please input your task name!' }]}
 
@@ -62,6 +59,7 @@ const TaskForm = () => {
                     <Form.Item
                         label="Enter Task Description"
                         name="Enter Task Description"
+                        value={dueDate}
                         onChange={(e) => setDescription(e.target.value)}
 
                         rules={[{ required: true, message: 'Please input your description!' }]}
@@ -83,7 +81,7 @@ const TaskForm = () => {
 
                     {/* Submit Button */}
                     <Form.Item>
-                        <Button type="primary" htmlType="submit"    >
+                        <Button type="primary"  >
                             Submit
                         </Button>
                     </Form.Item>
