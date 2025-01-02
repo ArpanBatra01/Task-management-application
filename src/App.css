@@ -24,6 +24,17 @@
   color: white;
 }
 
+
+button {
+  margin-top: 10px;
+}
+
+input, textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 1rem;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -36,3 +47,5 @@
     transform: rotate(360deg);
   }
 }
+
+

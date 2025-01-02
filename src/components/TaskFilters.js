@@ -1,17 +1,23 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { setFilter } from '../redux/tasks/taskSlice';
+import {setFilter} from '../redux/features/tasksSlice';
 
 const TaskFilters = () => {
-    
+
   const dispatch = useDispatch();
+
+
+  const handleFilterChange = (filter) => {
+    dispatch(setFilter(filter));
+
+  }
 
   return (
     <div>
-        <button onClick={() => dispatch(setFilter('All'))}>All</button>
-        <button onClick={() => dispatch(setFilter('Active'))}>Active</button>
-        <button onClick={() =>dispatch(setFilter('Completed'))}>Completed</button>
-      
+      <button onClick={() => handleFilterChange('All')}>All</button>
+      <button onClick={() => handleFilterChange('Active')}>Active</button>
+      <button onClick={() => handleFilterChange('Completed')}>Completed</button>
+
     </div>
   )
 }
