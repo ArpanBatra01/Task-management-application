@@ -4,13 +4,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TaskManagement from './pages/TaskManagement';
 
 function App() {
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={<TaskManagement />} />
-
       </Routes>
-    </Router>   
+    </Router>
   )
 
 }

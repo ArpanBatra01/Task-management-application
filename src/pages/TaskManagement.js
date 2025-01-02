@@ -1,19 +1,26 @@
 import React from 'react'
-import TaskForm from '../components/TaskForm';
 import TaskItem from '../components/TaskItem';
+import TaskForm from '../components/TaskForm/TaskForm';
+import TaskList from '../components/TaskList';
 import TaskFilters from '../components/TaskFilters';
 
 const TaskManagement = () => {
-    return (
-        <div className="App">
-            <h1>Task Management Application</h1>
-            <TaskForm />
-            <TaskItem />
-            <TaskFilters />
+  return (
+    <div className="App">
+      <h1>Task Management Application</h1>
+      <TaskForm />
+      <TaskList />
+
+      {/* <TaskItem/> */}
+      {/* <TaskItem/> */}
+
+      {/* <TaskList /> */}
+      {/* <TaskItem />
+      <TaskFilters /> */}
 
 
-            {/* <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />'h
+      {/* <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />'
     
             <p>
               Edit <code>src/App.js</code> and save to reload.
@@ -25,10 +32,11 @@ const TaskManagement = () => {
               rel="noopener noreferrer"
             >
               Learn React
+
             </a>
           </header> */}
-        </div>
-    );
+    </div>
+  );
 }
 
 export default TaskManagement
